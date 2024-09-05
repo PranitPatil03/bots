@@ -1,6 +1,9 @@
 import { Cpu, Lightbulb, ShoppingCart } from "lucide-react";
+import { useState } from "react";
 
 const HomeComponent = () => {
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+
   const dashboardItems = [
     {
       icon: Cpu,
@@ -18,9 +21,16 @@ const HomeComponent = () => {
 
   return (
     <>
-      {dashboardItems.map((item, key) => {
+      {dashboardItems.map((item, index) => {
+        const isSelected = selectedIndex === index;
         return (
-          <div className="flex gap-4 p-2 " key={key}>
+          <div
+            className={`flex gap-4 p-3 cursor-pointer rounded-xl m-1 hover:bg-gray-100 ${
+              isSelected ? "bg-gray-100" : ""
+            }`}
+            key={index}
+            onClick={() => setSelectedIndex(index)}
+          >
             <item.icon className="w-6 h-6 flex items-center justify-center rounded-lg cursor-pointer text-gray-400"></item.icon>
             <p className="text-base font-medium">{item.title}</p>
           </div>

@@ -57,7 +57,7 @@ const DynamicSidebar = () => {
         {activeItem !== null && (
           <motion.div
             initial={{ width: 0, opacity: 0 }}
-            animate={{ width: 300, opacity: 1}}
+            animate={{ width: 300, opacity: 1 }}
             exit={{ width: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="bg-white shadow-lg overflow-hidden border-r"
@@ -79,7 +79,7 @@ const DynamicSidebar = () => {
                 <Pencil className="w-5 h-5" />
               </Button>
             </div>
-            <div className="">
+            <div>
               <div className="text-lg mb-4 border-b p-4">
                 {activeItem === 0 && <HomeComponent />}
                 {activeItem === 1 && <AnalyticsComponent />}
@@ -107,7 +107,7 @@ const SidebarIcon: React.FC<{
         ${
           isActive
             ? "bg-gray-700 text-white"
-            : "text-gray-400 hover:bg-gray-700 hover:text-white"
+            : "text-gray-400 hover:bg-gray-700 hover:text-white "
         }`}
       onClick={onClick}
     >

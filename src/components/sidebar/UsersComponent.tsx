@@ -1,9 +1,12 @@
 import { MessageCircle, Calendar } from "lucide-react";
+import { useState } from "react";
 
-const ChatbotComponent = () => { 
+const ChatbotComponent = () => {
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+
   const chatItems = [
     {
-      icon: MessageCircle, 
+      icon: MessageCircle,
       title: "Chat with GPT",
     },
     {
@@ -14,9 +17,16 @@ const ChatbotComponent = () => {
 
   return (
     <>
-      {chatItems.map((item, key) => {
+      {chatItems.map((item, index) => {
+        const isSelected = selectedIndex === index;
         return (
-          <div className="flex gap-4 p-2 " key={key}>
+          <div
+            className={`flex gap-4 p-3 cursor-pointer rounded-xl m-1 hover:bg-gray-100 ${
+              isSelected ? "bg-gray-100" : ""
+            }`}
+            key={index}
+            onClick={() => setSelectedIndex(index)}
+          >
             <item.icon className="w-6 h-6 flex items-center justify-center rounded-lg cursor-pointer text-gray-400"></item.icon>
             <p className="text-base font-medium">{item.title}</p>
           </div>
